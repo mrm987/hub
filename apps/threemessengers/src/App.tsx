@@ -44,7 +44,7 @@ function App() {
     const totalImages = imagesToLoad.length;
 
     const loadImage = (src: string): Promise<void> => {
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         if (!src.startsWith('/') && !src.startsWith('http')) {
           // 이모지나 경로가 아닌 경우 바로 완료
           resolve();
