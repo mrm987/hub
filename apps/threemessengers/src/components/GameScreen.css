@@ -1,11 +1,9 @@
 .game-screen {
-  height: 100%;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   padding: 15px;
   transition: background-color 0.5s ease;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
   box-sizing: border-box;
   width: 100%;
   max-width: 450px;
