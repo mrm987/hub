@@ -1,0 +1,119 @@
+/**
+ * 모리모 게임 허브 - 공통 테마
+ *
+ * 모든 게임에서 공통으로 사용할 수 있는 CSS 변수들
+ * 각 프로젝트에서 이 파일을 import하거나 복사하여 사용하세요
+ */
+
+:root {
+    /* Primary Colors - 메인 색상 */
+    --primary-color: #667eea;
+    --primary-dark: #764ba2;
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+    /* Secondary Colors - 보조 색상 */
+    --secondary-color: #f093fb;
+    --secondary-dark: #f5576c;
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+
+    /* Accent Colors - 강조 색상 */
+    --accent-purple: #667eea;
+    --accent-pink: #f093fb;
+    --accent-blue: #4facfe;
+    --accent-green: #43e97b;
+
+    /* Text Colors - 텍스트 색상 */
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-tertiary: #999999;
+    --text-white: #ffffff;
+
+    /* Background Colors - 배경 색상 */
+    --bg-primary: #f5f7fa;
+    --bg-secondary: #ffffff;
+    --bg-dark: #1a1a1a;
+    --bg-overlay: rgba(0, 0, 0, 0.5);
+
+    /* Border & Shadow */
+    --border-radius-sm: 8px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 20px;
+    --border-radius-xl: 24px;
+
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.15);
+    --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.2);
+
+    /* Spacing - 간격 (8px 기준) */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 48px;
+    --space-3xl: 64px;
+
+    /* Typography - 타이포그래피 */
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    --font-size-xs: 0.75rem;   /* 12px */
+    --font-size-sm: 0.875rem;  /* 14px */
+    --font-size-md: 1rem;      /* 16px */
+    --font-size-lg: 1.125rem;  /* 18px */
+    --font-size-xl: 1.25rem;   /* 20px */
+    --font-size-2xl: 1.5rem;   /* 24px */
+    --font-size-3xl: 2rem;     /* 32px */
+    --font-size-4xl: 2.5rem;   /* 40px */
+
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+
+    /* Z-index layers */
+    --z-base: 0;
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal-backdrop: 1040;
+    --z-modal: 1050;
+    --z-popover: 1060;
+    --z-tooltip: 1070;
+}
+
+/* 다크 모드 지원 (선택사항) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-primary: #f5f5f5;
+        --text-secondary: #d1d1d1;
+        --text-tertiary: #a0a0a0;
+        --bg-primary: #1a1a1a;
+        --bg-secondary: #2a2a2a;
+    }
+}
+
+/* 유틸리티 클래스 */
+.gradient-primary {
+    background: var(--primary-gradient);
+}
+
+.gradient-secondary {
+    background: var(--secondary-gradient);
+}
+
+.text-gradient {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-xl { box-shadow: var(--shadow-xl); }
