@@ -8,6 +8,8 @@ import ResultScreen from './components/ResultScreen';
 import './App.css';
 
 function App() {
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [loadingProgress, setLoadingProgress] = useState(0);
   const [gameState, setGameState] = useState<GameState>({
     currentCountry: null,
     persuasion: 0,
@@ -23,6 +25,55 @@ function App() {
   } | null>(null);
   const responseTimerRef = useRef<number | null>(null);
   const [succeededCountries, setSucceededCountries] = useState<Set<string>>(new Set());
+
+  // 모든 이미지 미리 로드
+  useEffect(() => {
+    const imagesToLoad: string[] = [];
+
+    // 모든 국가의 이미지 수집
+    countries.forEach(country => {
+      if (country.selectImage) {
+        imagesToLoad.push(country.selectImage);
+      }
+      imagesToLoad.push(country.leaderImages.low);
+      imagesToLoad.push(country.leaderImages.medium);
+      imagesToLoad.push(country.leaderImages.high);
+    });
+
+    let loadedCount = 0;
+    const totalImages = imagesToLoad.length;
+
+    const loadImage = (src: string): Promise<void> => {
+      return new Promise((resolve, reject) => {
+        if (!src.startsWith('/') && !src.startsWith('http')) {
+          // 이모지나 경로가 아닌 경우 바로 완료
+          resolve();
+          return;
+        }
+
+        const img = new Image();
+        img.onload = () => {
+          loadedCount++;
+          setLoadingProgress(Math.round((loadedCount / totalImages) * 100));
+          resolve();
+        };
+        img.onerror = () => {
+          loadedCount++;
+          setLoadingProgress(Math.round((loadedCount / totalImages) * 100));
+          resolve(); // 에러가 나도 계속 진행
+        };
+        img.src = src;
+      });
+    };
+
+    Promise.all(imagesToLoad.map(loadImage))
+      .then(() => {
+        setImagesLoaded(true);
+      })
+      .catch(() => {
+        setImagesLoaded(true); // 에러가 나도 게임 시작
+      });
+  }, []);
 
   // 브라우저 뒤로가기 처리
   useEffect(() => {
@@ -155,35 +206,47 @@ function App() {
 
   return (
     <div className="app">
-      {gameState.gameStatus === 'country-select' && (
-        <CountrySelect
-          countries={countries}
-          onSelectCountry={handleSelectCountry}
-          succeededCountries={succeededCountries}
-        />
-      )}
+      {!imagesLoaded ? (
+        <div className="loading-screen">
+          <h1>3인의 전령</h1>
+          <div className="loading-bar">
+            <div className="loading-fill" style={{ width: `${loadingProgress}%` }} />
+          </div>
+          <p className="loading-text">이미지 로딩 중... {loadingProgress}%</p>
+        </div>
+      ) : (
+        <>
+          {gameState.gameStatus === 'country-select' && (
+            <CountrySelect
+              countries={countries}
+              onSelectCountry={handleSelectCountry}
+              succeededCountries={succeededCountries}
+            />
+          )}
 
-      {gameState.gameStatus === 'playing' && gameState.currentCountry && (
-        <GameScreen
-          country={gameState.currentCountry}
-          currentCard={cards[gameState.currentCardIndex]}
-          persuasion={gameState.persuasion}
-          currentCardIndex={gameState.currentCardIndex}
-          totalCards={gameState.totalCards}
-          onSwipe={handleSwipe}
-          leaderResponse={leaderResponse}
-        />
-      )}
+          {gameState.gameStatus === 'playing' && gameState.currentCountry && (
+            <GameScreen
+              country={gameState.currentCountry}
+              currentCard={cards[gameState.currentCardIndex]}
+              persuasion={gameState.persuasion}
+              currentCardIndex={gameState.currentCardIndex}
+              totalCards={gameState.totalCards}
+              onSwipe={handleSwipe}
+              leaderResponse={leaderResponse}
+            />
+          )}
 
-      {(gameState.gameStatus === 'success' || gameState.gameStatus === 'failure') &&
-        gameState.currentCountry && (
-          <ResultScreen
-            success={gameState.gameStatus === 'success'}
-            country={gameState.currentCountry}
-            persuasion={gameState.persuasion}
-            onRestart={handleRestart}
-          />
-        )}
+          {(gameState.gameStatus === 'success' || gameState.gameStatus === 'failure') &&
+            gameState.currentCountry && (
+              <ResultScreen
+                success={gameState.gameStatus === 'success'}
+                country={gameState.currentCountry}
+                persuasion={gameState.persuasion}
+                onRestart={handleRestart}
+              />
+            )}
+        </>
+      )}
     </div>
   );
 }
