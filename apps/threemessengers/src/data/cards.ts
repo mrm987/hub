@@ -299,7 +299,7 @@ export const markeCards: Card[] = [
       leaderResponse: '어머, 의리로 빵을 살 수 있는 건 아니랍니다.',
     },
     rightChoice: {
-      text: '구체적 이익을 제시한다',
+      text: '숫자로 이익을 계산해 보여준다',
       persuasionChange: 13,
       leaderResponse: '이제야 제대로 된 얘기를 하시는군요!',
     },
@@ -327,7 +327,7 @@ export const markeCards: Card[] = [
       leaderResponse: '빈 약속은 필요 없답니다.',
     },
     rightChoice: {
-      text: '구체적 보호 계획을 제시한다',
+      text: '아스텔 해군의 순찰을 약속한다',
       persuasionChange: 14,
       leaderResponse: '어머, 이거라면 충분하겠어요!',
     },
@@ -378,7 +378,7 @@ export const markeCards: Card[] = [
     id: 7,
     situation: '미라벨이 "제 사람들을 먹여살려야 하니까요"라고 진지하게 말합니다.',
     leftChoice: {
-      text: '구체적 이익을 제시한다',
+      text: '항구세 감면을 약속한다',
       persuasionChange: 12,
       leaderResponse: '이 정도면 설득이 되네요.',
     },
@@ -411,7 +411,7 @@ export const markeCards: Card[] = [
       leaderResponse: '불가능한 걸 약속하시는군요.',
     },
     rightChoice: {
-      text: '현실적 타협안을 제시한다',
+      text: '우선순위를 정해 협상한다',
       persuasionChange: 13,
       leaderResponse: '역시 장사꾼을 아시는군요!',
     },
