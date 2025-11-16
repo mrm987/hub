@@ -1,5 +1,5 @@
 .result-screen {
-  min-height: calc(100vh - 20px);
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,6 +7,7 @@
   overflow-y: auto;
   box-sizing: border-box;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  width: 100%;
 }
 
 .result-content {
