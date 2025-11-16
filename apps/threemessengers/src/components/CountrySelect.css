@@ -1,6 +1,5 @@
 .country-select {
-  min-height: 100vh;
-  min-height: 100dvh;
+  min-height: calc(100vh - 20px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,11 +8,6 @@
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   overflow-y: auto;
   box-sizing: border-box;
-}
-
-.country-select > * {
-  max-width: 600px; /* 컨텐츠 최대 너비 제한 */
-  width: 100%;
 }
 
 .title-section {
