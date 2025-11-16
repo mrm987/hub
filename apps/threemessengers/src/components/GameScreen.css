@@ -1,12 +1,16 @@
 .game-screen {
   height: 100vh;
   height: 100dvh; /* 모바일 동적 뷰포트 */
+  max-height: 900px; /* 고해상도에서 최대 높이 제한 */
   display: flex;
   flex-direction: column;
   padding: 15px;
   transition: background-color 0.5s ease;
   overflow: hidden;
   box-sizing: border-box;
+  margin: 0 auto; /* 중앙 정렬 */
+  width: 100%;
+  max-width: 600px; /* 가로도 제한해서 모바일 비율 유지 */
 }
 
 .game-header {

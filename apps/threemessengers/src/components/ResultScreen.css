@@ -10,7 +10,7 @@
 }
 
 .result-content {
-  max-width: 500px;
+  max-width: 600px; /* 다른 화면과 일관성 유지 */
   width: 100%;
   background: white;
   border-radius: 25px;
