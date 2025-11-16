@@ -30,14 +30,14 @@ body {
   width: 100%;
   height: 100vh;
   height: 100dvh;
-  overflow: hidden; /* 스크롤 방지 */
+  overflow: hidden; /* 전체 페이지 스크롤 방지, 각 화면 내부에서만 스크롤 */
 }
 
 #root {
   width: 100%;
   height: 100vh;
   height: 100dvh;
-  overflow: hidden;
+  overflow: visible; /* 내부 컨테이너의 스크롤 허용 */
 }
 
 button {
