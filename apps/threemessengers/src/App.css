@@ -6,7 +6,8 @@
   align-items: center;
   background-color: #1a1a2e;
   padding: 0;
-  overflow: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* 로딩 화면 */
