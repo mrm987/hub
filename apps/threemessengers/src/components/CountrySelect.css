@@ -122,6 +122,14 @@
 @media (max-width: 480px) {
   .country-select {
     justify-content: flex-start;
+    align-items: stretch;
+    padding-top: 20px;
+  }
+
+  .title-section,
+  .country-list,
+  .completion-section {
+    align-self: center;
   }
 }
 

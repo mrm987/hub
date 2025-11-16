@@ -198,11 +198,13 @@
 @media (max-width: 480px) {
   .result-screen {
     justify-content: flex-start;
-    padding: 15px;
+    align-items: stretch;
+    padding: 20px 15px;
   }
 
   .result-content {
     padding: 30px 20px;
+    align-self: center;
   }
 
   .result-icon {
